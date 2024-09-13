@@ -8,22 +8,22 @@ environ.Env.read_env(str(BASE_DIR / ".env.prod"))
 SECRET_KEY = env.str("SECRET_KEY")
 DEBUG = env.bool("DEBUG")
 
-ALLOWED_HOSTS = ["mini-django-railway-production.up.railway.app"]
+ALLOWED_HOSTS = ["mini-django-railway-production-941e.up.railway.app"]
 CSRF_TRUSTED_ORIGINS = [
-    "https://mini-django-railway-production.up.railway.app"
+    "https://mini-django-railway-production-941e.up.railway.app"
 ]  # modify later
 
 MIDDLEWARE = MIDDLEWARE + ["whitenoise.middleware.WhiteNoiseMiddleware"]
 
 # DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": env.str("DB_NAME"),
-#         "USER": env.str("DB_USER"),
-#         "PASSWORD": env.str("DB_PWD"),
-#         "HOST": env.str("DB_HOST"),
-#         "PORT": env.str("DB_PORT"),
-#     }
+#      "default": {
+#          "ENGINE": "django.db.backends.postgresql_psycopg2",
+#          "NAME": env.str("DB_NAME"),
+#          "USER": env.str("DB_USER"),
+#          "PASSWORD": env.str("DB_PWD"),
+#          "HOST": env.str("DB_HOST"),
+#          "PORT": env.str("DB_PORT"),
+#      }
 # }
 
 # If you want to use sqlite3 instead, then uncomment this and comment the above.
@@ -38,11 +38,11 @@ MIDDLEWARE = MIDDLEWARE + ["whitenoise.middleware.WhiteNoiseMiddleware"]
 STATIC_ROOT = str(BASE_DIR / "staticfiles")
 STATICFILES_DIRS = (str(BASE_DIR / "static"),)
 
-# Connect to our database remotely
+#Connect to our database remotely
 import dj_database_url
 
-DATABASE_URL = env.str("DATABASE_URL")
+DATABASE_PUBLIC_URL = env.str("DATABASE_PUBLIC_URL")
 
 DATABASES = {
-    "default": dj_database_url.config(default=DATABASE_URL),
+   "default": dj_database_url.config(default=DATABASE_PUBLIC_URL),
 }
